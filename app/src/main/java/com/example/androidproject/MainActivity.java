@@ -2,7 +2,9 @@ package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.edtPassword);
         btn_login = (Button) findViewById(R.id.btnLogin);
 
+        recuperarpreferencias();
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                 if (!response.isEmpty()){
+                    GuardarPreferencias();
                     Intent intent = new Intent(getApplicationContext(),MenuPrincipal.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                 }
@@ -77,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros=new HashMap<String, String>();
-                    parametros.put("dni", dni.getText().toString());
-                    parametros.put("password", password.getText().toString());
+                    parametros.put("dni",usuario);
+                    parametros.put("password", pwd);
                     return parametros;
                 }
             };
@@ -86,6 +92,23 @@ public class MainActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
 
         }
+        //método para guardar datos de logeo,
+        // al cerrar y abrir la app una vez logeado no volverá a pedir el login
+        private void GuardarPreferencias (){
+        SharedPreferences preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("dni", usuario);
+        editor.putString("password", pwd);
+        editor.putBoolean("sesion", true);
+        editor.commit();
+        }
+        //método q permite recuperar los datos de login guardados
+    private void recuperarpreferencias (){
+        SharedPreferences preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
+        dni.setText(preferences.getString("dni", "123456789M"));
+        password.setText(preferences.getString("password", "1234"));
+
+    }
 
     //método OnLogic, ejecutado al presionar el boton 'Login'
     //public void OnLogin (View view) {
