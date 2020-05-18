@@ -49,5 +49,6 @@
     <string name="m_dni">DNI</string>
     <string name="m_username">Nombre de usuario</string>
     <string name="m_email">Email</string>
+    <string name="btncerrarsesion">Cerrar Sesión</string>
 
 </resources>

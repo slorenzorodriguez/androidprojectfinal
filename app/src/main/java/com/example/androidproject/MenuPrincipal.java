@@ -52,5 +52,8 @@ public class MenuPrincipal extends AppCompatActivity {
 
         startActivity(new Intent(this, MisDatosCita.class));
     }
+    public void CerrarSesion (View view){
+        startActivity( new Intent(this, MainActivity.class));
+    }
 
 }

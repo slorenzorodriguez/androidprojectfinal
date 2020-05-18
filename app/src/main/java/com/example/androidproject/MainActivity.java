@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("sesion", true);
         editor.commit();
         }
-        //método q permite recuperar los datos de login guardados
+        //método que permite recuperar los datos de login guardados
     private void recuperarpreferencias (){
         SharedPreferences preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
         dni.setText(preferences.getString("dni", "123456789M"));
