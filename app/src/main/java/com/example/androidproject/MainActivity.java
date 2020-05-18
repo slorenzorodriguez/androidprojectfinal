@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //defino variables:
     EditText dni, password;
     Button btn_login;
+    String usuario, pwd;
 
 
     @Override
@@ -41,7 +42,17 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usuario=dni.getText().toString();
+                pwd=password.getText().toString();
                 Login("http://10.0.2.2:80/login.php");
+                if(!usuario.isEmpty() && !pwd.isEmpty()){
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Campos vacíos no permitidos", Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
         });
     }
