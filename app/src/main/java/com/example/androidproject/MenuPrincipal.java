@@ -22,8 +22,8 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
 
         //inicializo las variables:
-        dni = (EditText) findViewById(R.id.txtdni);
-        password = (EditText) findViewById(R.id.txtpwd);
+       // dni = (EditText) findViewById(R.id.txtdni);
+        //password = (EditText) findViewById(R.id.txtpwd);
         //btncitas = (Button) findViewById(R.id.button18);
 
         //Toast.makeText(getApplicationContext(), "¡Bienvenido/a!", Toast.LENGTH_SHORT).show();
