@@ -29,48 +29,48 @@ public class backgroundworker extends AsyncTask <String, Void, String> {
         String type = voids[0];
         //establecemos una url para comunicarnos con ella, en este caso nos comunicaremos con la base de datos.
         //ip de url estándar por android 10.0.2.2:
-        String login_url = "http://10.0.2.2:80/login.php";//si da problemas al logear puede que sea esta ip (normalmente funciona), para cambiarla, comando - ipconfig
+       // String login_url = "http://10.0.2.2:80/login.php";//si da problemas al logear puede que sea esta ip (normalmente funciona), para cambiarla, comando - ipconfig
         String register_url = "http://10.0.2.2:80/register.php";
         String registrodoc_url = "http://10.0.2.2:80/registrodoc.php";
         String registroseguro_url = "http://10.0.2.2:80/registroseguro.php";
         String registrousuario_url = "http://10.0.2.2:80/registrousuario.php";
-        if (type.equals("login")){
-            try {
-                String user_dni = voids[1];
-                String user_pwd = voids[2];
-                URL url = new URL(login_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter (new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("dni", "UTF-8")+"="+URLEncoder.encode(user_dni, "UTF-8")+"&"
-                        +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(user_pwd, "UTF-8");
-                bufferedWriter.write(post_data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                String result="";
-                String line = "";
-                while((line = bufferedReader.readLine())!= null){
-                    result += line;
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                return result;
+      //  if (type.equals("login")){
+        //    try {
+        //      String user_dni = voids[1];
+        ////      String user_pwd = voids[2];
+        //    URL url = new URL(login_url);
+        //      HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        ////      httpURLConnection.setRequestMethod("POST");
+        //    httpURLConnection.setDoOutput(true);
+        //      httpURLConnection.setDoInput(true);
+        //      OutputStream outputStream = httpURLConnection.getOutputStream();
+        //      BufferedWriter bufferedWriter = new BufferedWriter (new OutputStreamWriter(outputStream, "UTF-8"));
+        //      String post_data = URLEncoder.encode("dni", "UTF-8")+"="+URLEncoder.encode(user_dni, "UTF-8")+"&"
+        //              +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(user_pwd, "UTF-8");
+        //      bufferedWriter.write(post_data);
+        //      bufferedWriter.flush();
+        //      bufferedWriter.close();
+        //      outputStream.close();
+        //      InputStream inputStream = httpURLConnection.getInputStream();
+        //      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+        //      String result="";
+        //      String line = "";
+        //      while((line = bufferedReader.readLine())!= null){
+        //          result += line;
+        //      }
+        //      bufferedReader.close();
+        //      inputStream.close();
+        //      httpURLConnection.disconnect();
+        //      return result;
+//
+        //          } catch (MalformedURLException e) {
+        //      e.printStackTrace();
+        //  } catch (IOException e) {
+        //      e.printStackTrace();
+        //  }
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-
-        }else  if (type.equals("register")) {
+         if (type.equals("register")) {
             try {
                 String u_dni = voids[1];
                 String u_password = voids[2];
@@ -204,6 +204,7 @@ public class backgroundworker extends AsyncTask <String, Void, String> {
                 String dni_login = voids[1];
                 String password_login = voids[2];
                 String name_login = voids[3];
+                String email_login = voids[4];
                 URL url = new URL(registrousuario_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -214,7 +215,8 @@ public class backgroundworker extends AsyncTask <String, Void, String> {
 
                 String post_data = URLEncoder.encode("dni", "UTF-8")+"="+URLEncoder.encode(dni_login, "UTF-8")+"&"
                         +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password_login, "UTF-8")+"&"
-                        +URLEncoder.encode("name", "UTF-8")+"="+URLEncoder.encode(name_login, "UTF-8");
+                        +URLEncoder.encode("name", "UTF-8")+"="+URLEncoder.encode(name_login, "UTF-8")+"&"
+                        +URLEncoder.encode("email", "UTF-8")+"="+URLEncoder.encode(email_login, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

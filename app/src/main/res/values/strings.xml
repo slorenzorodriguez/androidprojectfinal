@@ -48,5 +48,6 @@
     <string name="ing_pwd">Ingrese su contraseña</string>
     <string name="m_dni">DNI</string>
     <string name="m_username">Nombre de usuario</string>
+    <string name="m_email">Email</string>
 
 </resources>

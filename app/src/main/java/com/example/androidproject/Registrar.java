@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Registrar extends AppCompatActivity {
-    EditText u_dni, u_password, u_username;
+    EditText u_dni, u_password, u_username, u_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,8 @@ public class Registrar extends AppCompatActivity {
         u_dni = (EditText) findViewById(R.id.reg_dni);
         u_password = (EditText) findViewById(R.id.reg_password);
         u_username = (EditText) findViewById(R.id.reg_username);
+        u_email = (EditText) findViewById(R.id.reg_email);
+
     }
 
     public void registrarusuario (View view) {
@@ -25,11 +27,13 @@ public class Registrar extends AppCompatActivity {
         String str_dni = u_dni.getText().toString();
         String str_password = u_password.getText().toString();
         String str_username = u_username.getText().toString();
+        String str_email = u_email.getText().toString();
+
         String type = "registrousuario";
 
         //instanciamos la clase backgroundworker
         backgroundworker bw = new backgroundworker(this);
-        bw.execute(type, str_dni, str_password,str_username);
+        bw.execute(type, str_dni, str_password,str_username,str_email);
 
     }
 
