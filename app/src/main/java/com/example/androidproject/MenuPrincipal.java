@@ -13,8 +13,7 @@ import android.widget.Toast;
 
 public class MenuPrincipal extends AppCompatActivity {
     //defino variables:
-    EditText dni, password;
-    Button btncitas, btn_mcitas;
+   Button btn_cerrarsesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,7 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
 
         //inicializo las variables:
-       // dni = (EditText) findViewById(R.id.txtdni);
-        //password = (EditText) findViewById(R.id.txtpwd);
-        //btncitas = (Button) findViewById(R.id.button18);
+       btn_cerrarsesion = (Button) findViewById(R.id.btncerrarsesion);
 
         //Toast.makeText(getApplicationContext(), "¡Bienvenido/a!", Toast.LENGTH_SHORT).show();
     }
