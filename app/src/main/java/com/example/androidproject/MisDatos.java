@@ -67,6 +67,7 @@ public class MisDatos extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject = null;
+
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
@@ -95,6 +96,7 @@ public class MisDatos extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Toast.makeText(getApplicationContext(), "MODIFICACIÓN EXITOSA", Toast.LENGTH_SHORT).show();
             }
 
